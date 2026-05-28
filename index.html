@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8" />
-  <title>Julian Garratt</title>
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image View</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+    }
 
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    .hero-image {
+      max-width: min(95vw, 1000px);
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      display: block;
+      transform: rotate(var(--tilt-angle, 0deg));
+      transition: transform 0.2s ease;
+      transform-origin: center center;
+    }
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css" />
-  <link rel="stylesheet" href="css/skeleton.css" />
-  <link rel="stylesheet" href="css/custom.css">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png" />
+    .hero-image.is-tilted {
+      transform: rotate(var(--tilt-angle, 0deg));
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <img src="images/output.png" alt="Building cutout" class="hero-image">
+  <script>
+    const heroImage = document.querySelector(".hero-image");
 
-  <div class="container">
-    <div class="row">
-      <div class="two-thirds column full-width-on-small">
-        <h4 style="margin-bottom: 0%">Julian Garratt</h4>
-        <h6 style="margin-top: 0%; margin-bottom: 0%;">Machine Learning Engineer @ H2O.ai</h6>
-        <p>
-          <a href="https://www.linkedin.com/in/julian-garratt-7506281bb" target="_blank"
-            rel="noopener noreferrer">Linkedin</a>
-          <a href="https://github.com/MillenniumForce" target="_blank" rel="noopener noreferrer">Github</a>
-        </p>
-        <p style="margin-bottom: 1rem;">Some of my favourite achievements so far:</p>
-        <ul style="padding-left: 20px;">
-          <li><a href=https://youtu.be/h9lI8WLFq14?si=9Znm39RkUIKmJuA2>Intro to AI Agents</a> YouTube series.</li>
-          <li>Grand prize winner of <a href=https://devpost.com/software/root-cause-analysis>Databricks & AWS LLM
-              Cup</a> 2023.</li>
-          <li>2023 Global Voices Fellow researching <a
-              href=https://www.globalvoices.org.au/post/from-crisis-to-preparedness-enhancing-disaster-resilience-for-at-risk-communities-with-anticipatory>policy</a>
-            on applying machine learning to climate adaptation strategies in Australia.</li>
-        </ul>
-      </div>
-      <div class="one-third column hide-on-small">
-        <img src="images/professional_pic.jpeg" class="professional-pic">
-      </div>
-    </div>
-  </div>
+    heroImage.addEventListener("mouseenter", () => {
+      const direction = Math.random() < 0.5 ? -1 : 1;
+      const magnitude = Math.random() * 5 + 5;
+      heroImage.style.setProperty("--tilt-angle", `${direction * magnitude}deg`);
+      heroImage.classList.add("is-tilted");
+    });
 
-  <!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    heroImage.addEventListener("mouseleave", () => {
+      heroImage.style.setProperty("--tilt-angle", "0deg");
+      heroImage.classList.remove("is-tilted");
+    });
+  </script>
 </body>
-
 </html>
