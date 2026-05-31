@@ -11,8 +11,8 @@
   --accent:  #b4502e;
   --accent-strong: #97401f;
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "Karla", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --sp-1: 8px;
@@ -56,8 +56,8 @@ h1, h2 {
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: 42px; font-weight: 600; }
-h2 { font-size: 27px; font-weight: 600; }
+h1 { font-size: 42px; font-weight: 500; }
+h2 { font-size: 27px; font-weight: 500; }
 
 p { margin: 0 0 var(--sp-2); }
 
