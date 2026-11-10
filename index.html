@@ -5,16 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1d2021">
     <title>Julian Garratt</title>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png">
     <link rel="stylesheet" href="now.css?v=3">
     <style>
-      @font-face {
-        font-family: "Hack Nerd Font Mono";
-        src: url("assets/fonts/HackNerdFontMono-Regular.ttf") format("truetype");
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-      }
-
       html {
         min-height: 100%;
         background-color: #1d2021;
@@ -90,11 +83,6 @@
         color: #d4be98;
       }
 
-      ::selection {
-        background-color: #585858;
-        color: #d4be98;
-      }
-
       .cursor {
         display: inline-block;
         width: 1ch;
@@ -159,49 +147,12 @@
     </main>
     <dialog class="page-dialog now-content" id="now-dialog" aria-labelledby="now-title">
       <button class="dialog-close" type="button" aria-label="Close Now" autofocus><span aria-hidden="true">&#xf00d;</span></button>
-      <h1 id="now-title">Now</h1>
-      <p>Last updated: 8 November 2026</p>
-      <section>
-        <h2>Reading</h2>
-        <p><em>Heart of Darkness</em> by Joseph Conrad.</p>
-        <img class="book-cover" src="images/heart_of_darkness.png" alt="Heart of Darkness by Joseph Conrad">
-      </section>
-      <section>
-        <h2>Building</h2>
-        <p>An iOS app, coming soon.</p>
-      </section>
     </dialog>
     <dialog class="page-dialog now-content" id="projects-dialog" aria-labelledby="projects-title">
       <button class="dialog-close" type="button" aria-label="Close Projects" autofocus><span aria-hidden="true">&#xf00d;</span></button>
-      <h1 id="projects-title">Projects</h1>
-    <p>Some things I’ve built, shipped, and researched:</p>
-
-    <ul class="achievements-list">
-      <li>Launched <a href="https://github.com/h2oai/h2ogpte-action" target="_blank" rel="noopener">an open-source AI code assistant</a> at H2O.ai in 4 months: h2oGPTe Action for GitHub Actions, running on your own infrastructure.</li>
-      <li>Grand prize winner of the <a href="https://devpost.com/software/root-cause-analysis" target="_blank" rel="noopener">Databricks &amp; AWS LLM Cup 2023</a>, beating 1,000+ participants with a 4-person team building root-cause-analysis insights from customer complaints on Databricks.</li>
-      <li>Created <a href="https://www.coursera.org/learn/h2o-ai-agents-from-theory-to-practice" target="_blank" rel="noopener">H2O.ai Agents: From Theory to Practice</a>, a production-grade Coursera course on agents with 6,000+ paid enrollments.</li>
-      <li>Published <a href="https://www.globalvoices.org.au/post/from-crisis-to-preparedness-enhancing-disaster-resilience-for-at-risk-communities-with-anticipatory" target="_blank" rel="noopener">research</a> applying ML to Australian disaster preparedness, estimated to save the Australian government $512M, and presented at the World Bank &amp; IMF Annual Meetings in Morocco (2024).</li>
-    </ul>
     </dialog>
     <dialog class="page-dialog now-content" id="about-dialog" aria-labelledby="about-title">
       <button class="dialog-close" type="button" aria-label="Close About" autofocus><span aria-hidden="true">&#xf00d;</span></button>
-      <h1 id="about-title">About</h1>
-
-    <div class="about-layout">
-      <figure class="about-photo">
-        <img src="images/professional_pic.jpeg" alt="Julian Garratt">
-      </figure>
-
-      <div class="about-bio">
-        <p class="role">Machine Learning Engineer @ H2O.ai</p>
-        <p>I’m Julian, a Machine Learning Engineer at H2O.ai. I’m originally Australian and now based in
-          New York City, where I build practical AI systems: open-source developer tooling, LLM applications,
-          and agentic workflows that ship to real users.</p>
-        <p>My work spans engineering and research, from launching an open-source AI code assistant to
-          applying machine learning to climate-adaptation policy. I like turning ambitious ideas into
-          production-grade software that people actually use.</p>
-      </div>
-    </div>
     </dialog>
     <script>
       document.addEventListener("click", async (event) => {
