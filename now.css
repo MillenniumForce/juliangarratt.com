@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Hack Nerd Font Mono";
+  src: url("assets/fonts/HackNerdFontMono-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.now-content {
+  color: #d4be98;
+  font-family: "Hack Nerd Font Mono", monospace;
+  font-size: 20px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.now-content h1,
+.now-content h2 {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.now-content h1 {
+  margin-top: 0;
+  font-size: 1.25em;
+}
+
+#now-title,
+#projects-title,
+#about-title {
+  width: fit-content;
+  border-bottom: 2px solid currentColor;
+}
+
+.now-content h2 {
+  color: #7daea3;
+  margin-top: 2em;
+}
+
+.now-content a {
+  color: inherit;
+}
+
+.now-content li + li {
+  margin-top: 1.25em;
+}
+
+.now-content ul {
+  padding-left: 1.25em;
+}
+
+.now-content figure {
+  margin: 0 0 24px;
+}
+
+.now-content img {
+  display: block;
+  max-width: 100%;
+  width: 240px;
+  height: auto;
+}
+
+::selection {
+  background-color: #585858;
+  color: #d4be98;
+}

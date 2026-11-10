@@ -1,32 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Julian Garratt - Machine Learning Engineer</title>
-  <meta name="description" content="Julian Garratt - Machine Learning Engineer at H2O.ai, based in NYC. Explore the building.">
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Karla:wght@400;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="home-main">
-    <div class="building-wrap">
-      <img class="building-img" src="images/nyc-building.png" alt="A New York City apartment building with ground-floor storefronts and a leafy tree out front">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1d2021">
+    <title>Julian Garratt</title>
+    <link rel="stylesheet" href="now.css?v=3">
+    <style>
+      @font-face {
+        font-family: "Hack Nerd Font Mono";
+        src: url("assets/fonts/HackNerdFontMono-Regular.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
 
-      <a class="hotspot hs-about" href="about.html" aria-label="About"></a>
-      <span class="hs-label label-about" aria-hidden="true">About</span>
+      html {
+        min-height: 100%;
+        background-color: #1d2021;
+      }
 
-      <a class="hotspot hs-storefront" href="now.html" aria-label="Now"></a>
-      <span class="hs-label label-storefront" aria-hidden="true">Now</span>
+      body {
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        padding: 15px;
+        background-color: #1d2021;
+        color: #d4be98;
+        font-family: "Hack Nerd Font Mono", monospace;
+        font-size: 20px;
+        line-height: 1.5;
+      }
 
-      <a class="hotspot hs-tree" href="projects.html" aria-label="Projects"></a>
-      <span class="hs-label label-tree" aria-hidden="true">Projects</span>
+      .prompt {
+        margin: 0;
+        overflow-wrap: anywhere;
+        font: inherit;
+        font-size: 22.5px;
+      }
+
+      main {
+        display: grid;
+        justify-items: center;
+        gap: 40px;
+        max-width: 100%;
+      }
+
+      .folders {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .folders a {
+        display: grid;
+        justify-items: center;
+        gap: 5px;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .folder-icon {
+        color: #7daea3;
+        font-size: 40px;
+        line-height: 1;
+      }
+
+      .folders a > span:last-child {
+        padding: 2.5px 15px;
+        border-radius: 999px;
+      }
+
+      .folders a:hover > span:last-child,
+      .folders a:focus-visible > span:last-child {
+        background-color: #d2bd97;
+        color: #1d2021;
+      }
+
+      .folders a:focus-visible {
+        outline: 1.25px solid currentColor;
+        outline-offset: 7.5px;
+      }
+
+      .prompt-symbol {
+        color: #d4be98;
+      }
+
+      ::selection {
+        background-color: #585858;
+        color: #d4be98;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 1ch;
+        height: 1.2em;
+        vertical-align: -0.2em;
+        background-color: currentColor;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+
+      .page-dialog {
+        box-sizing: border-box;
+        width: min(680px, calc(100% - 40px));
+        max-height: calc(100svh - 80px);
+        padding: 40px;
+        border: 0;
+        background: #3c3836;
+      }
+
+      .page-dialog::backdrop {
+        background: #0003;
+      }
+
+      .dialog-close {
+        display: grid;
+        place-items: center;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        margin: -16px -16px 16px auto;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: #d4be98;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .dialog-close:hover,
+      .dialog-close:focus-visible {
+        background: #d2bd97;
+        color: #1d2021;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cursor { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="folders" aria-label="Pages">
+        <a href="now.html" id="now-link" data-dialog="now-dialog" aria-haspopup="dialog"><span class="folder-icon" aria-hidden="true">&#xe5ff;</span><span>now</span></a>
+        <a href="projects.html" data-dialog="projects-dialog" aria-haspopup="dialog"><span class="folder-icon" aria-hidden="true">&#xe5ff;</span><span>projects</span></a>
+        <a href="about.html" data-dialog="about-dialog" aria-haspopup="dialog"><span class="folder-icon" aria-hidden="true">&#xe5ff;</span><span>about</span></a>
+      </nav>
+    <h1 class="prompt" aria-label="Welcome to juliangarratt.com"><span aria-hidden="true"><span class="prompt-symbol">▸</span> <span id="welcome">Welcome to juliangarratt.com</span><span class="cursor"></span></span></h1>
+    </main>
+    <dialog class="page-dialog now-content" id="now-dialog" aria-labelledby="now-title">
+      <button class="dialog-close" type="button" aria-label="Close Now" autofocus><span aria-hidden="true">&#xf00d;</span></button>
+      <h1 id="now-title">Now</h1>
+      <p>Last updated: 8 November 2026</p>
+      <section>
+        <h2>Reading</h2>
+        <p><em>Heart of Darkness</em> by Joseph Conrad.</p>
+      </section>
+      <section>
+        <h2>Building</h2>
+        <p>An iOS app, coming soon.</p>
+      </section>
+    </dialog>
+    <dialog class="page-dialog now-content" id="projects-dialog" aria-labelledby="projects-title">
+      <button class="dialog-close" type="button" aria-label="Close Projects" autofocus><span aria-hidden="true">&#xf00d;</span></button>
+      <h1 id="projects-title">Projects</h1>
+    <p>Some things I’ve built, shipped, and researched:</p>
+
+    <ul class="achievements-list">
+      <li>Launched <a href="https://github.com/h2oai/h2ogpte-action" target="_blank" rel="noopener">an open-source AI code assistant</a> at H2O.ai in 4 months: h2oGPTe Action for GitHub Actions, running on your own infrastructure.</li>
+      <li>Grand prize winner of the <a href="https://devpost.com/software/root-cause-analysis" target="_blank" rel="noopener">Databricks &amp; AWS LLM Cup 2023</a>, beating 1,000+ participants with a 4-person team building root-cause-analysis insights from customer complaints on Databricks.</li>
+      <li>Created <a href="https://www.coursera.org/learn/h2o-ai-agents-from-theory-to-practice" target="_blank" rel="noopener">H2O.ai Agents: From Theory to Practice</a>, a production-grade Coursera course on agents with 6,000+ paid enrollments.</li>
+      <li>Published <a href="https://www.globalvoices.org.au/post/from-crisis-to-preparedness-enhancing-disaster-resilience-for-at-risk-communities-with-anticipatory" target="_blank" rel="noopener">research</a> applying ML to Australian disaster preparedness, estimated to save the Australian government $512M, and presented at the World Bank &amp; IMF Annual Meetings in Morocco (2024).</li>
+    </ul>
+    </dialog>
+    <dialog class="page-dialog now-content" id="about-dialog" aria-labelledby="about-title">
+      <button class="dialog-close" type="button" aria-label="Close About" autofocus><span aria-hidden="true">&#xf00d;</span></button>
+      <h1 id="about-title">About</h1>
+
+    <div class="about-layout">
+      <figure class="about-photo">
+        <img src="images/professional_pic.jpeg" alt="Julian Garratt">
+      </figure>
+
+      <div class="about-bio">
+        <p class="role">Machine Learning Engineer @ H2O.ai</p>
+        <p>I’m Julian, a Machine Learning Engineer at H2O.ai. I’m originally Australian and now based in
+          New York City, where I build practical AI systems: open-source developer tooling, LLM applications,
+          and agentic workflows that ship to real users.</p>
+        <p>My work spans engineering and research, from launching an open-source AI code assistant to
+          applying machine learning to climate-adaptation policy. I like turning ambitious ideas into
+          production-grade software that people actually use.</p>
+      </div>
     </div>
-  </main>
+    </dialog>
+    <script>
+      document.addEventListener("click", async (event) => {
+          const link = event.target.closest("[data-dialog]");
+          if (!link) return;
+          const dialog = document.getElementById(link.dataset.dialog);
+          if (!dialog) return;
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          const source = document.querySelector(`.folders [data-dialog="${dialog.id}"]`);
+          try {
+            const response = await fetch(source.href);
+            if (!response.ok) throw new Error("Page could not be loaded");
+            const page = new DOMParser().parseFromString(await response.text(), "text/html");
+            const content = page.querySelector("main");
+            if (!content) throw new Error("Page content is missing");
+            const closeButton = dialog.querySelector(".dialog-close");
+            dialog.replaceChildren(closeButton, ...content.childNodes);
+          } catch {
+            window.location.href = source.href;
+            return;
+          }
+          document.querySelectorAll(".page-dialog[open]").forEach((openDialog) => openDialog.close());
+          dialog.showModal();
+      });
+      document.querySelectorAll(".page-dialog").forEach((dialog) => {
+        dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+          const bounds = dialog.getBoundingClientRect();
+          if (event.target === dialog &&
+              (event.clientX < bounds.left || event.clientX > bounds.right ||
+               event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+            dialog.close();
+          }
+        });
+      });
 
-  <script src="main.js"></script>
-</body>
+      if (window.location.hash === "#now-dialog") {
+        document.getElementById("now-link").click();
+      }
+
+      const welcome = document.getElementById("welcome");
+      const message = welcome.textContent;
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        welcome.textContent = "";
+        let position = 0;
+
+        function typeCharacter() {
+          position += 1;
+          welcome.textContent = message.slice(0, position);
+          if (position < message.length) {
+            window.setTimeout(typeCharacter, 75);
+          }
+        }
+
+        window.setTimeout(typeCharacter, 350);
+      }
+    </script>
+  </body>
 </html>
