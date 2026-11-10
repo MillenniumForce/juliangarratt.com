@@ -60,6 +60,10 @@
   height: auto;
 }
 
+.now-content .book-cover {
+  box-sizing: border-box;
+}
+
 ::selection {
   background-color: #585858;
   color: #d4be98;
